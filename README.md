@@ -58,7 +58,7 @@ Machine Learning Models:
 The project uses two datasets:
 
 1. Steel Industry Energy Consumption Dataset
-2. Industrial IoT Machine Sensor Dataset
+2. Energy Dataset
 
 ---
 
