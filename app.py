@@ -253,7 +253,6 @@ if navigation == "Executive Dashboard":
         background: linear-gradient(90deg, rgba(0,245,212,0.12), rgba(79,172,254,0.12));
         border: 1px solid rgba(255,255,255,0.1);
         border-radius: 18px;
-        
         padding: 20px;
         margin-bottom: 20px;
     ">
