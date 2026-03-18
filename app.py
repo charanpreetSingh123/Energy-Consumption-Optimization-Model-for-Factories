@@ -22,7 +22,7 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 html, body, [class*="css"] {
     font-family: 'Poppins', sans-serif;
@@ -31,53 +31,87 @@ html, body, [class*="css"] {
 /* Background gradient */
 .stApp {
     background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-    color:white;
+    
+            color: white;
 }
 
 /* Sidebar styling */
 section[data-testid="stSidebar"]{
-    background: linear-gradient(180deg,#141E30,#243B55);
-    border-right:1px solid #333;
+    
+            background: linear-gradient(180deg,#141E30,#243B55);
+    border-right: 1px solid #333;
 }
 
-/* Card design */
-.metric-card{
-    background: rgba(255,255,255,0.05);
-    padding:20px;
-    border-radius:15px;
-    backdrop-filter: blur(10px);
-    border:1px solid rgba(255,255,255,0.1);
-    transition:0.3s;
+/* Main titles */
+h1, h2, h3 {
+    color: #00F5D4;
 }
 
-.metric-card:hover{
-    transform:scale(1.03);
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+/* Metric cards (REAL hover effect) */
+.metric-card {
+    background: rgba(255,255,255,0.06);
+    
+            border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 18px;
+    
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    transition: all 0.35s ease;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* Titles */
-h1,h2,h3{
-    color:#00F5D4;
+.metric-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 16px 40px rgba(0,245,212,0.18);
+    border: 1px solid rgba(0,245,212,0.35);
 }
+/* Metric text styles */
+.metric-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #B8FFF5;
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;}
+
+.metric-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.2;
+    margin-bottom: 8px;}
+
+.metric-sub {
+    font-size: 13px;
+    color: #B0BEC5;
+    opacity: 0.9;}
 
 /* Buttons */
-.stButton>button{
+.stButton > button {
     background: linear-gradient(45deg,#00F5D4,#4FACFE);
-    color:black;
-    border-radius:10px;
-    font-weight:600;
+    color: black;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+    transition: 0.3s ease;}
+
+.stButton > button:hover {
+    transform: scale(1.04);
+    box-shadow: 0 8px 20px rgba(79,172,254,0.35);
 }
 
 /* Progress bar */
-.stProgress > div > div{
+.stProgress > div > div {
     background: linear-gradient(90deg,#00F5D4,#4FACFE);
 }
 
 </style>
 """, unsafe_allow_html=True)
-
 # ---------------- DATA LOADING ----------------
-
 @st.cache_data
 def load_data():
 
@@ -207,29 +241,44 @@ with st.sidebar:
     st.markdown("---")
     st.caption("AI Powered Factory OS")
 
-
 # ---------------- DASHBOARD ----------------
 
 if navigation == "Executive Dashboard":
 
     st.title("Enterprise Energy Overview")
 
-    col1,col2,col3 = st.columns(3)
+    latest_energy = df_steel['Usage_kWh'].iloc[-1]
+    latest_co2 = df_steel['CO2tCO2'].iloc[-1]
+    latest_cost = latest_energy * 8
+
+    col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.markdown('<div class="metric-card">',unsafe_allow_html=True)
-        st.metric("Energy Usage",f"{df_steel['Usage_kWh'].iloc[-1]:.1f} kWh")
-        st.markdown('</div>',unsafe_allow_html=True)
+        st.markdown(f"""
+        <div class="metric-card">
+            <div class="metric-title">⚡ Energy Usage</div>
+            <div class="metric-value">{latest_energy:.1f} kWh</div>
+            <div class="metric-sub">Latest factory energy draw</div>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col2:
-        st.markdown('<div class="metric-card">',unsafe_allow_html=True)
-        st.metric("CO2 Emission",f"{df_steel['CO2tCO2'].iloc[-1]:.2f} tCO2")
-        st.markdown('</div>',unsafe_allow_html=True)
+        st.markdown(f"""
+        <div class="metric-card">
+            <div class="metric-title">🌍 CO₂ Emission</div>
+            <div class="metric-value">{latest_co2:.2f} tCO2</div>
+            <div class="metric-sub">Current carbon footprint</div>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col3:
-        st.markdown('<div class="metric-card">',unsafe_allow_html=True)
-        st.metric("Estimated Cost",f"₹{df_steel['Usage_kWh'].iloc[-1]*8:.2f}")
-        st.markdown('</div>',unsafe_allow_html=True)
+        st.markdown(f"""
+        <div class="metric-card">
+            <div class="metric-title">💰 Estimated Cost</div>
+            <div class="metric-value">₹{latest_cost:.2f}</div>
+            <div class="metric-sub">Approx energy expense</div>
+        </div>
+        """, unsafe_allow_html=True)
 
     trend = df_steel.tail(200)
 
@@ -240,7 +289,7 @@ if navigation == "Executive Dashboard":
         title="Energy Consumption Trend"
     )
 
-    fig.update_traces(line=dict(width=3,color="#00F5D4"))
+    fig.update_traces(line=dict(width=3, color="#00F5D4"))
 
     fig.update_layout(
         paper_bgcolor="rgba(0,0,0,0)",
@@ -248,8 +297,7 @@ if navigation == "Executive Dashboard":
         hovermode="x unified"
     )
 
-    st.plotly_chart(fig,use_container_width=True)
-
+    st.plotly_chart(fig, use_container_width=True)
 
 # ---------------- FORECAST ----------------
 
@@ -284,6 +332,7 @@ elif navigation == "AI Forecast":
 
 elif navigation == "Digital Twin Simulator":
 
+    
     st.title("Factory Digital Twin Simulator")
 
     col1,col2 = st.columns([1,2])
@@ -343,7 +392,6 @@ elif navigation == "Digital Twin Simulator":
             st.progress(int(min(100,efficiency)))
 
             st.write(f"Energy Efficiency Score: {efficiency:.1f}/100")
-
 
 # ---------------- HEATMAP ----------------
 
