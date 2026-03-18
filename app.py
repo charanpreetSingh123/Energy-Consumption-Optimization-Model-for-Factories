@@ -245,6 +245,26 @@ with st.sidebar:
 
 if navigation == "Executive Dashboard":
 
+    st.title("Executive Dashboard")
+    
+    
+    st.markdown("""
+    <div style="
+        background: linear-gradient(90deg, rgba(0,245,212,0.12), rgba(79,172,254,0.12));
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 18px;
+        
+        padding: 20px;
+        margin-bottom: 20px;
+    ">
+        <h2 style="margin:0; color:#00F5D4;">⚡ Eco-Smart Factory Hub</h2>
+        <p style="margin:8px 0 0 0; color:#CFE8EF;">
+            AI-powered energy optimization, predictive monitoring, and digital twin intelligence for smart manufacturing.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+
     st.title("Enterprise Energy Overview")
 
     latest_energy = df_steel['Usage_kWh'].iloc[-1]
