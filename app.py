@@ -264,12 +264,20 @@ if navigation == "Executive Dashboard":
     """, unsafe_allow_html=True)
 
 
-    st.title("Enterprise Energy Overview")
+    st.subheader("Enterprise Energy Overview")
 
     latest_energy = df_steel['Usage_kWh'].iloc[-1]
     latest_co2 = df_steel['CO2tCO2'].iloc[-1]
     latest_cost = latest_energy * 8
+ # ----- UPCOMING FEATURE: KPI DELTA TRACKING ----- 
+    prev_energy = df_steel['Usage_kWh'].iloc[-2]
+    prev_co2 = df_steel['CO2tCO2'].iloc[-2]
+    prev_cost = prev_energy * 8
 
+    energy_delta = latest_energy - prev_energy
+    co2_delta = latest_co2 - prev_co2
+    cost_delta = latest_cost - prev_cost
+ # --- END UPCOMING FEATURE BLOCK ---
     col1, col2, col3 = st.columns(3)
 
     with col1:
@@ -340,11 +348,22 @@ elif navigation == "AI Forecast":
         energy = rf_energy.predict(X_pred)[0]
         co2 = rf_co2.predict(X_pred)[0]
 
+        energy_low = energy * 0.92
+        energy_high = energy * 1.08
+
+        co2_low = co2 * 0.92
+        co2_high = co2 * 1.08
+
         c1,c2,c3 = st.columns(3)
 
         c1.metric("Predicted Energy",f"{energy:.2f} kWh")
         c2.metric("Predicted CO2",f"{co2:.3f} tCO2")
         c3.metric("Estimated Cost",f"₹{energy*8:.2f}")
+
+        st.info(
+    f"Forecast Confidence Range → Energy: {energy_low:.2f} - {energy_high:.2f} kWh | "
+    f"CO2: {co2_low:.3f} - {co2_high:.3f} tCO2"
+)
 
 
 # ---------------- DIGITAL TWIN ----------------
