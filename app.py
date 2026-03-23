@@ -281,31 +281,35 @@ if navigation == "Executive Dashboard":
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.markdown(f"""
-        <div class="metric-card">
+       st.markdown(f"""
+       <div class="metric-card">
             <div class="metric-title">⚡ Energy Usage</div>
             <div class="metric-value">{latest_energy:.1f} kWh</div>
-            <div class="metric-sub">Latest factory energy draw</div>
+            <div class="metric-sub">
+            Change: {energy_delta:+.1f} kWh from previous reading
         </div>
-        """, unsafe_allow_html=True)
-
+    </div>
+    """, unsafe_allow_html=True)
     with col2:
-        st.markdown(f"""
-        <div class="metric-card">
+      st.markdown(f"""
+      <div class="metric-card">
             <div class="metric-title">🌍 CO₂ Emission</div>
             <div class="metric-value">{latest_co2:.2f} tCO2</div>
-            <div class="metric-sub">Current carbon footprint</div>
+            <div class="metric-sub">
+            Change: {co2_delta:+.2f} tCO2 from previous reading
         </div>
-        """, unsafe_allow_html=True)
-
+    </div>
+    """, unsafe_allow_html=True)
     with col3:
-        st.markdown(f"""
-        <div class="metric-card">
+      st.markdown(f"""
+      <div class="metric-card">
             <div class="metric-title">💰 Estimated Cost</div>
             <div class="metric-value">₹{latest_cost:.2f}</div>
-            <div class="metric-sub">Approx energy expense</div>
+            <div class="metric-sub">
+            Change: ₹{cost_delta:+.2f} from previous reading
         </div>
-        """, unsafe_allow_html=True)
+    </div>
+    """, unsafe_allow_html=True)
 
     trend = df_steel.tail(200)
 
