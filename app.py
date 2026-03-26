@@ -277,6 +277,27 @@ if navigation == "Executive Dashboard":
     energy_delta = latest_energy - prev_energy
     co2_delta = latest_co2 - prev_co2
     cost_delta = latest_cost - prev_cost
+
+    if energy_delta > 0:
+        energy_change_text = f"Increase: {energy_delta:+.1f} kWh from previous reading"
+    elif energy_delta < 0:
+        energy_change_text = f"Decrease: {energy_delta:+.1f} kWh from previous reading"
+    else:
+        energy_change_text = "No change from previous reading"
+
+    if co2_delta > 0:
+        co2_change_text = f"Increase: {co2_delta:+.2f} tCO2 from previous reading"
+    elif co2_delta < 0:
+        co2_change_text = f"Decrease: {co2_delta:+.2f} tCO2 from previous reading"
+    else:
+        co2_change_text = "No change from previous reading"
+
+    if cost_delta > 0:
+        cost_change_text = f"Increase: ₹{cost_delta:+.2f} from previous reading"
+    elif cost_delta < 0:
+        cost_change_text = f"Decrease: ₹{cost_delta:+.2f} from previous reading"
+    else:
+        cost_change_text = "No change from previous reading"
  # --- END UPCOMING FEATURE BLOCK ---
     col1, col2, col3 = st.columns(3)
 
@@ -286,7 +307,7 @@ if navigation == "Executive Dashboard":
             <div class="metric-title">⚡ Energy Usage</div>
             <div class="metric-value">{latest_energy:.1f} kWh</div>
             <div class="metric-sub">
-            Change: {energy_delta:+.1f} kWh from previous reading
+            {energy_change_text}
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -296,7 +317,7 @@ if navigation == "Executive Dashboard":
             <div class="metric-title">🌍 CO₂ Emission</div>
             <div class="metric-value">{latest_co2:.2f} tCO2</div>
             <div class="metric-sub">
-            Change: {co2_delta:+.2f} tCO2 from previous reading
+            {co2_change_text}
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -306,7 +327,7 @@ if navigation == "Executive Dashboard":
             <div class="metric-title">💰 Estimated Cost</div>
             <div class="metric-value">₹{latest_cost:.2f}</div>
             <div class="metric-sub">
-            Change: ₹{cost_delta:+.2f} from previous reading
+            {cost_change_text}
         </div>
     </div>
     """, unsafe_allow_html=True)
