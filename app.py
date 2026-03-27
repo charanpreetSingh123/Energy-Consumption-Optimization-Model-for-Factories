@@ -270,6 +270,7 @@ if navigation == "Executive Dashboard":
     latest_co2 = df_steel['CO2tCO2'].iloc[-1]
     latest_cost = latest_energy * 8
  # ----- UPCOMING FEATURE: KPI DELTA TRACKING ----- 
+   # ----- UPCOMING FEATURE: KPI DELTA TRACKING ----- 
     prev_energy = df_steel['Usage_kWh'].iloc[-2]
     prev_co2 = df_steel['CO2tCO2'].iloc[-2]
     prev_cost = prev_energy * 8
@@ -279,25 +280,26 @@ if navigation == "Executive Dashboard":
     cost_delta = latest_cost - prev_cost
 
     if energy_delta > 0:
-        energy_change_text = f"Increase: {energy_delta:+.1f} kWh from previous reading"
+        energy_change_text = f'<span style="color:#FF6B6B;">⬆ Increase: {energy_delta:+.1f} kWh from previous reading</span>'
     elif energy_delta < 0:
-        energy_change_text = f"Decrease: {energy_delta:+.1f} kWh from previous reading"
+        energy_change_text = f'<span style="color:#00E676;">⬇ Decrease: {energy_delta:+.1f} kWh from previous reading</span>'
     else:
-        energy_change_text = "No change from previous reading"
+        energy_change_text = '<span style="color:#B0BEC5;">➡ No change from previous reading</span>'
 
     if co2_delta > 0:
-        co2_change_text = f"Increase: {co2_delta:+.2f} tCO2 from previous reading"
+        co2_change_text = f'<span style="color:#FF6B6B;">⬆ Increase: {co2_delta:+.2f} tCO2 from previous reading</span>'
     elif co2_delta < 0:
-        co2_change_text = f"Decrease: {co2_delta:+.2f} tCO2 from previous reading"
+        co2_change_text = f'<span style="color:#00E676;">⬇ Decrease: {co2_delta:+.2f} tCO2 from previous reading</span>'
     else:
-        co2_change_text = "No change from previous reading"
+        co2_change_text = '<span style="color:#B0BEC5;">➡ No change from previous reading</span>'
 
     if cost_delta > 0:
-        cost_change_text = f"Increase: ₹{cost_delta:+.2f} from previous reading"
+        cost_change_text = f'<span style="color:#FF6B6B;">⬆ Increase: ₹{cost_delta:+.2f} from previous reading</span>'
     elif cost_delta < 0:
-        cost_change_text = f"Decrease: ₹{cost_delta:+.2f} from previous reading"
+        cost_change_text = f'<span style="color:#00E676;">⬇ Decrease: ₹{cost_delta:+.2f} from previous reading</span>'
     else:
-        cost_change_text = "No change from previous reading"
+        cost_change_text = '<span style="color:#B0BEC5;">➡ No change from previous reading</span>'
+ # --- END UPCOMING FEATURE BLOCK ---
  # --- END UPCOMING FEATURE BLOCK ---
     col1, col2, col3 = st.columns(3)
 
