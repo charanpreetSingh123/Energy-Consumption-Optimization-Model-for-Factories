@@ -17,7 +17,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ---------------- DARK UI STYLE ----------------
+# ---------------- UI  ----------------
 
 st.markdown("""
 <style>
@@ -189,7 +189,7 @@ def load_data():
     return df_steel, df_iiot
 
 
-# ---------------- FORECAST MODEL ----------------
+# ---------------- FORECAST----------------
 
 @st.cache_resource
 def train_forecasting_model(df):
@@ -214,7 +214,7 @@ def train_forecasting_model(df):
     return rf_energy, rf_co2, le_day, le_load
 
 
-# ---------------- ANOMALY MODEL ----------------
+# ---------------- ANOMALY  ----------------
 
 @st.cache_resource
 def train_anomaly_model(df):
@@ -230,7 +230,7 @@ def train_anomaly_model(df):
     return iso, features
 
 
-# ---------------- NLP MODEL ----------------
+# ---------------- NLP MODEL -------
 
 @st.cache_resource
 def train_nlp_model():
@@ -260,7 +260,7 @@ def train_nlp_model():
     return vec, clf
 
 
-# ---------------- LOAD SYSTEM ----------------
+# ---------------- LOAD SYSTEM ------
 
 with st.spinner("Loading AI Systems..."):
 
@@ -273,7 +273,7 @@ with st.spinner("Loading AI Systems..."):
     vec, clf = train_nlp_model()
 
 
-# ---------------- SIDEBAR ----------------
+# ---------- SIDEBAR ----------------
 
 with st.sidebar:
 
@@ -296,7 +296,7 @@ with st.sidebar:
     st.caption("AI Powered Factory OS")
 
 
-# ---------------- DASHBOARD ----------------
+# ---------------- DASHBOARD----------
 
 if navigation == "Executive Dashboard":
 
@@ -485,7 +485,7 @@ if navigation == "Executive Dashboard":
         """, unsafe_allow_html=True)
 
 
-# ---------------- FORECAST ----------------
+# ---------------- FORECAST -----
 
 elif navigation == "AI Forecast":
 
@@ -577,7 +577,7 @@ elif navigation == "AI Forecast":
         """, unsafe_allow_html=True)
 
 
-# ---------------- DIGITAL TWIN ----------------
+# ------------- DIGITAL TWIN ----------------
 
 elif navigation == "Digital Twin Simulator":
 
@@ -673,7 +673,7 @@ elif navigation == "Digital Twin Simulator":
             """, unsafe_allow_html=True)
 
 
-# ---------------- HEATMAP ----------------
+# ----- HEATMAP ----------------
 
 elif navigation == "Spatial Heatmap":
 
@@ -726,7 +726,7 @@ elif navigation == "Spatial Heatmap":
     st.plotly_chart(fig, use_container_width=True)
 
 
-# ---------------- NLP ----------------
+# -------------- NLP -------------
 
 elif navigation == "NLP Alert System":
 
