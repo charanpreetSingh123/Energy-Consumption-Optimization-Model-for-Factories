@@ -17,7 +17,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ---------------- UI  ----------------
+# ---------------- UI ----------------
 
 st.markdown("""
 <style>
@@ -189,7 +189,7 @@ def load_data():
     return df_steel, df_iiot
 
 
-# ---------------- FORECAST----------------
+# ---------------- FORECAST MODEL ----------------
 
 @st.cache_resource
 def train_forecasting_model(df):
@@ -214,7 +214,7 @@ def train_forecasting_model(df):
     return rf_energy, rf_co2, le_day, le_load
 
 
-# ---------------- ANOMALY  ----------------
+# ---------------- ANOMALY MODEL ----------------
 
 @st.cache_resource
 def train_anomaly_model(df):
@@ -230,7 +230,7 @@ def train_anomaly_model(df):
     return iso, features
 
 
-# ---------------- NLP MODEL -------
+# ---------------- NLP MODEL ----------------
 
 @st.cache_resource
 def train_nlp_model():
@@ -260,7 +260,7 @@ def train_nlp_model():
     return vec, clf
 
 
-# ---------------- LOAD SYSTEM ------
+# ---------------- LOAD SYSTEM ----------------
 
 with st.spinner("Loading AI Systems..."):
 
@@ -273,7 +273,7 @@ with st.spinner("Loading AI Systems..."):
     vec, clf = train_nlp_model()
 
 
-# ---------- SIDEBAR ----------------
+# ---------------- SIDEBAR ----------------
 
 with st.sidebar:
 
@@ -288,7 +288,8 @@ with st.sidebar:
             "AI Forecast",
             "Digital Twin Simulator",
             "Spatial Heatmap",
-            "NLP Alert System"
+            "NLP Alert System",
+            "📚 Research Paper"
         ]
     )
 
@@ -296,7 +297,7 @@ with st.sidebar:
     st.caption("AI Powered Factory OS")
 
 
-# ---------------- DASHBOARD----------
+# ---------------- DASHBOARD ----------------
 
 if navigation == "Executive Dashboard":
 
@@ -485,7 +486,7 @@ if navigation == "Executive Dashboard":
         """, unsafe_allow_html=True)
 
 
-# ---------------- FORECAST -----
+# ---------- FORECAST ----------------
 
 elif navigation == "AI Forecast":
 
@@ -577,7 +578,7 @@ elif navigation == "AI Forecast":
         """, unsafe_allow_html=True)
 
 
-# ------------- DIGITAL TWIN ----------------
+# ---------------- DIGITAL TWIN ----------------
 
 elif navigation == "Digital Twin Simulator":
 
@@ -673,7 +674,7 @@ elif navigation == "Digital Twin Simulator":
             """, unsafe_allow_html=True)
 
 
-# ----- HEATMAP ----------------
+# ---------------- HEATMAP ----------------
 
 elif navigation == "Spatial Heatmap":
 
@@ -726,7 +727,7 @@ elif navigation == "Spatial Heatmap":
     st.plotly_chart(fig, use_container_width=True)
 
 
-# -------------- NLP -------------
+# ---------------- NLP ----------------
 
 elif navigation == "NLP Alert System":
 
@@ -777,3 +778,125 @@ elif navigation == "NLP Alert System":
 
         else:
             st.warning("Ignored message.")
+
+#              RESEARCH PAPER 
+
+elif navigation == "📚 Research Paper":
+
+    st.title("📚 Research & Technical Documentation")
+
+    st.markdown("""
+     <div class="hero-card">
+        <h2 style="margin:0; color:#00F5D4;">
+        An Intelligent Energy Consumption Optimization Model for Factories
+        </h2>
+
+        <p style="margin-top:10px; color:#CFE8EF;">
+        Technical research study developed as part of the  Eco-Smart Factory Hub project.
+        This document presents  the methodology, machine learning models,
+        optimization framework, experimental results and Industry 4.0 vision
+        behind the system.
+        </p>
+     </div>
+    """, unsafe_allow_html=True)
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.markdown("""
+        <div class="metric-card">
+            <div class="metric-title">📄 Document Type</div>
+            <div class="metric-value">Research Paper</div>
+            <div class="metric-sub">
+            Technical project documentation
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col2:
+        st.markdown("""
+        <div class="metric-card">
+            <div class="metric-title">🤖 Core AI Model</div>
+            <div class="metric-value">Random Forest</div>
+            <div class="metric-sub">
+            Best Forecasting Model
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col3:
+        st.markdown("""
+        <div class="metric-card">
+            <div class="metric-title">🏭 Domain</div>
+            <div class="metric-value">Industry 4.0</div>
+            <div class="metric-sub">
+            Smart Manufacturing
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("### 📖 Abstract")
+
+    st.info("""
+            Industrial factories are among the largest consumers of electrical energy.
+            This research proposes an intelligent Energy Consumption Optimization Model
+            that combines IoT-based monitoring, machine learning forecasting and
+            optimization recommendations to improve factory energy efficiency.
+            The framework enables predictive energy management, anomaly identification,
+             and operational decision support for sustainable manufacturing environments.
+        """)
+    st.markdown("### 🔬 Key Contributions")
+
+    st.success("""
+            ✓ Machine Learning based Energy Forecasting
+
+            ✓ Factory Energy Optimization Framework
+
+            ✓ Industry 4.0 Dashboard Deployment
+
+            ✓ Predictive Decision Support
+
+            ✓ Digital Twin Based Analysis
+
+            ✓ Smart Manufacturing Approach
+        """)
+
+    st.markdown("### 📊 Research Highlights")
+
+    research_data = {
+        "Metric": [
+            "Forecast Accuracy (R²)",
+            "Energy Reduction",
+            "Idle Time Reduction",
+            "Peak Demand Cost Reduction"
+        ],
+        "Value": [
+            "0.93",
+            "21%",
+            "71%",
+            "25%"
+        ]
+    }
+
+    st.table(pd.DataFrame(research_data))
+
+    st.markdown("### 📥 Download Research Paper")
+
+    with open("research_paper.pdf", "rb") as pdf_file:
+        pdf_bytes = pdf_file.read()
+
+    st.download_button(
+        label="📄 Download Full Research Paper",
+        data=pdf_bytes,
+        file_name="An_Intelligent_Energy_Consumption_Optimization_Model_for_Factories.pdf",
+        mime="application/pdf"
+    )
+
+    st.markdown("###  Note")
+
+    st.markdown("""
+    This document demonstrates the research, system design,
+    machine learning methodology, experimentation process,
+    and technical analysis performed during development of
+    the Eco-Smart Factory Hub platform.
+    """)            
