@@ -30,6 +30,10 @@ The system provides a centralized dashboard that allows factory operators and de
 This solution demonstrates how **AI can support sustainable and data-driven manufacturing operations**.
 
 ---
+## 🌐 Live Demo
+👉 [View Live App](https://energy-consumption-optimization-model-for-factories-ktv2fscy8x.streamlit.app)
+
+---
 
 ## 🚀 Key Features
 
