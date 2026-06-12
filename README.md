@@ -149,15 +149,15 @@ Used for:
 
 | Executive Dashboard | AI Forecasting |
 |---|---|
-| ![Dashboard](screenshots/executive_dashboard.png) | ![Forecasting](screenshots/AI_forecast.png) |
+| ![Dashboard](screenshots/Executive_dashboard.png) | ![Forecasting](screenshots/AI_forecast.png) |
 
 | Digital Twin Simulator | Heatmap & Anomaly Detection |
 |---|---|
-| ![Digital Twin](screenshots/digital_twin_simulator.png) | ![Heatmap](screenshots/heatmap.png) |
+| ![Digital Twin](screenshots/Digital_twin_simulator.png) | ![Heatmap](screenshots/heatmap.png) |
 
 | NLP Alert System | Research Paper |
 |---|---|
-| ![NLP](screenshots/NLP_alert_system.png) | ![Research](screenshots/research_paper.png) |
+| ![NLP](screenshots/NLP_alert_system.png) | ![Research](screenshots/Research_paper.png) |
 
 ## 🛠️ Technologies Used
 
