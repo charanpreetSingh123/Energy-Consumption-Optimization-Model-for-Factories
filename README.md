@@ -46,14 +46,14 @@ A premium real-time dashboard monitoring enterprise energy metrics with KPI delt
 - 📊 Live energy usage (kWh) with trend visualization
 - 🌿 CO₂ emissions (tCO₂) tracking
 - 💰 Estimated electricity cost monitoring
-- 📈 KPI delta tracking — increase/decrease vs previous reading
+- 📈 KPI delta tracking  increase/decrease vs previous reading
 
 ---
 
 ### `2` AI Energy Forecasting
 > **Predict future energy demand before it happens — not after.**
 
-Uses a **Random Forest Regressor** to forecast energy-related metrics based on operational conditions, enabling proactive planning.
+Uses a **Random Forest Regressor** to forecast energy related metrics based on operational conditions, enabling proactive planning.
 
 - 🔋 Predicts energy consumption, CO₂ emissions, and estimated cost
 - 📅 Inputs: day of the week + load type
@@ -64,7 +64,7 @@ Uses a **Random Forest Regressor** to forecast energy-related metrics based on o
 ### `3` Factory Digital Twin Simulator
 > **Test production scenarios virtually before running them on the floor.**
 
-A simplified digital twin that estimates factory performance under different operating conditions — no real-world risk required.
+A simplified digital twin that estimates factory performance under different operating conditions no real-world risk required.
 
 | Parameter | Description |
 |---|---|
@@ -79,7 +79,7 @@ A simplified digital twin that estimates factory performance under different ope
 ### `4` Machine Anomaly Detection
 > **Catch problems before they become failures.**
 
-Runs **Isolation Forest** on IoT sensor data to surface abnormal machine behaviour — identifying faults, overloads, and inefficiencies automatically.
+Runs **Isolation Forest** on IoT sensor data to surface abnormal machine behaviour identifying faults, overloads, and inefficiencies automatically.
 
 - ⚡ Monitored: Energy (kWh) · Current (A) · Machine utilization (%)
 - 🚨 Flags: Energy inefficiency · Faults · Overload conditions · Preventive maintenance needs
