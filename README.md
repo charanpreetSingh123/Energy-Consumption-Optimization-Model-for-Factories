@@ -51,7 +51,7 @@ A premium real-time dashboard monitoring enterprise energy metrics with KPI delt
 ---
 
 ### `2` AI Energy Forecasting
-> **Predict future energy demand before it happens — not after.**
+> **Predict future energy demand before it happens not after.**
 
 Uses a **Random Forest Regressor** to forecast energy related metrics based on operational conditions, enabling proactive planning.
 
