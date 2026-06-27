@@ -268,6 +268,6 @@ eco-smart-factory-hub/
 
 <br/>
 
-*If you found this project useful, consider giving it a ⭐ on GitHub!*
+*If you found this project useful, consider giving it a ⭐ on GitHub :)*
 
 </div>
